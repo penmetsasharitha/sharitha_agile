@@ -1,0 +1,32 @@
+#include <iostream>
+#include <cmath>
+
+// Function to check if a number is prime
+bool isPrime(int n) {
+    if (n <= 1) return false;
+    if (n <= 3) return true;
+    if (n % 2 == 0 || n % 3 == 0) return false;
+
+    for (int i = 5; i * i <= n; i += 6) {
+        if (n % i == 0 || n % (i + 2) == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+int main() {
+    int upperLimit;
+    std::cout << "Enter the upper limit: ";
+    std::cin >> upperLimit;
+
+    int primeCount = 0;
+    for (int num = 2; num <= upperLimit; num++) {
+        if (isPrime(num)) {
+            primeCount++;
+        }
+    }
+
+    std::cout << "Number of prime numbers up to " << upperLimit << ": " << primeCount << std::endl;
+    return 0;
+}
